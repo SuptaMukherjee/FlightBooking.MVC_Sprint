@@ -1,0 +1,77 @@
+{
+  "Ticket": {
+    "Id": 12,
+    "PaymentDate": "2021-12-20T13:04:41.7902174+05:30",
+    "IsCanceled": false,
+    "AgentId": "4c140da0-8d0e-4f2d-80bc-0273a29292fa",
+    "Agent": null,
+    "PaymentId": 21,
+    "Payment": null
+  },
+  "Bookings": [
+    {
+      "Flight": {
+        "Id": 4,
+        "FlightName": "PuneTrivundrum Hawai Delux",
+        "FromLocation": 6,
+        "ToLocation": 15,
+        "ArrivalDate": "2021-12-29T00:00:00",
+        "DepartureDate": "2021-12-29T00:00:00",
+        "DepartureTime": "2021-12-20T14:00:00",
+        "ArrivalTime": "2021-12-20T16:00:00",
+        "FlightStatus": 3,
+        "IsActive": true,
+        "BusinessSeatCapacity": 10,
+        "EconomicSeatCapacity": 70,
+        "BusinessClassPrice": 8546.0,
+        "EconomicClassPrice": 4599.0
+      },
+      "Passenger": {
+        "Id": 1,
+        "FirstName": "Anuska",
+        "LastName": "Sharma",
+        "Email": "anuska.sharma@yahoo.mail",
+        "DateOfBirth": "1985-07-02T00:00:00",
+        "IsActive": true,
+        "ContactNo": 7854693148,
+        "Gender": 2
+      },
+      "SeatType": "Business Class",
+      "PaymentAmount": 0.0,
+      "Payment": null,
+      "PaymentId": 21
+    },
+    {
+      "Flight": {
+        "Id": 4,
+        "FlightName": "PuneTrivundrum Hawai Delux",
+        "FromLocation": 6,
+        "ToLocation": 15,
+        "ArrivalDate": "2021-12-29T00:00:00",
+        "DepartureDate": "2021-12-29T00:00:00",
+        "DepartureTime": "2021-12-20T14:00:00",
+        "ArrivalTime": "2021-12-20T16:00:00",
+        "FlightStatus": 3,
+        "IsActive": true,
+        "BusinessSeatCapacity": 10,
+        "EconomicSeatCapacity": 70,
+        "BusinessClassPrice": 8546.0,
+        "EconomicClassPrice": 4599.0
+      },
+      "Passenger": {
+        "Id": 2,
+        "FirstName": "Virat ",
+        "LastName": "Kohli",
+        "Email": "virat.kohli@gmail.com",
+        "DateOfBirth": "1986-11-05T00:00:00",
+        "IsActive": true,
+        "ContactNo": 8956743214,
+        "Gender": 1
+      },
+      "SeatType": "Economic Class",
+      "PaymentAmount": 0.0,
+      "Payment": null,
+      "PaymentId": 21
+    }
+  ]
+}

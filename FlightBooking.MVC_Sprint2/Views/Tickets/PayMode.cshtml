@@ -1,0 +1,37 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    <h1>PaymentMode</h1>
+
+
+    @*<p>Please select your Mode of Payment:</p>
+        <p>
+
+            @using(Html.BeginForm("PayCreate","Orders",FormMethod.Post))
+            {
+                 @Html.RadioButton("SearchBy","COD") <text>Cash On Delivery</text> <br/>
+                @Html.RadioButton("SearchBy","PayMode") <text>Online Payment</text><br/>
+                <input type="submit" value="Continue"/>
+            }
+         </p>*@
+
+    @*<form asp-controller="Orders" asp-action="PayCreate">
+            <p>Please select your Mode of Payment:</p>
+            <input type="radio" name="PayMode" value="COD">
+            <label for="cod">COD</label><br>
+            <input type="radio" name="PayMode" value="Online">
+            <label for="online">PayNow</label><br>
+            <input type="radio" name="PayMode" value="Online">
+            <label for="online">PayNow</label><br>
+            <input type="submit" value="Continue" />
+        </form>*@
+    <form asp-controller="Tickets" asp-action="PayCreate">
+        <p>Please select your Mode of Payment:</p>
+        <input type="checkbox" name="paymentMode" value="UPI">
+        <label for="online">UPI</label><br>
+        <input type="checkbox" name="paymentMode" value="NetBanking">
+        <label for="online">Credit card</label><br>
+        <input type="checkbox" name="paymentMode" value="NetBanking">
+        <label for="online">Debit card</label><br>
+        <input type="submit" value="Next" />
+    </form>
+}

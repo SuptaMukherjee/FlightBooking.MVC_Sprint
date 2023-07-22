@@ -1,0 +1,55 @@
+﻿@model IEnumerable<FlightBooking.MVC_Sprint2.Models.Ticket>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div style="font-family:'Times New Roman'">
+    <h1 style="color:brown" align="center" ;><b>Passenger Tickets</b></h1>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCanceled)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Payment)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentDate)
+            </td>
+            <td>
+                @{
+                    string isCanceled = item.IsCanceled ? "Yes" : "No";
+                }
+                @Html.DisplayFor(modelItem => isCanceled)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Payment.Id)
+            </td>
+            <td>
+               
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                @if (!item.IsCanceled)
+                {
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

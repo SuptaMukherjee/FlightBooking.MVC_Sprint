@@ -1,0 +1,92 @@
+﻿@model FlightBooking.MVC_Sprint2.Models.PassengerViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Passenger</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div>
+        <form asp-action="Add" asp-controller="TicketBooking">
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="Id" class="control-label"></label>
+                    <input asp-for="Id" class="form-control" readonly />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="SeatType" class="control-label"></label>
+                    <select asp-for="SeatType" class="form-control">
+                        <option value="">Select</option>
+                        <option value="Business Class">Business Class</option>
+                        <option value="Economic Class">Economic Class</option>
+                    </select>
+                    <span asp-validation-for="SeatType" class="text-danger"></span>
+                </div>
+                <input type="submit" value="Add to Booking" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+}
+else
+{
+    <span>Please Log in to Boook Ticket</span>
+}
+

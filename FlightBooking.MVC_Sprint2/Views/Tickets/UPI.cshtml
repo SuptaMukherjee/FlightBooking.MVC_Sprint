@@ -1,0 +1,39 @@
+﻿@model FlightBooking.MVC_Sprint2.Models.Payment
+@{
+    ViewData["Title"] = "UPI";
+}
+
+<h1>UPI</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UPI">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UPI" class="control-label"></label>
+                <select asp-for="UPI" class="form-control"
+                        asp-items="Html.GetEnumSelectList<UPI>()">
+                    <option value="">Select</option>
+                </select>
+                <span asp-validation-for="UPI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UPI_ID" class="control-label"></label>
+                <input asp-for="UPI_ID" class="form-control" />
+                <span asp-validation-for="UPI_ID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Pay" class=" btn btn-primary" asp-action="PayCreate" asp-controller="Tickets" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

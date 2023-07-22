@@ -1,0 +1,138 @@
+﻿@model IEnumerable<FlightBooking.MVC_Sprint2.Models.TicketBooking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Ticket Booking Page</h1>
+@if(Model!= null && Model.Count() > 0)
+{
+
+    <br />
+    @*@<a asp-controller="Orders" asp-action="Create">Buy Now</a>*@
+    <div>
+        <form asp-action="PayMode" asp-controller="Tickets">
+            <table class="table-bordered">
+                <thead>
+                    <tr>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.Flight.Id)
+                            </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.Flight.FlightName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Flight.BusinessClassPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Flight.EconomicClassPrice)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.SeatType)
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.Passenger.Id)
+                            </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.Passenger.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Passenger.LastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PaymentAmount)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Flight.Id)
+                                </td>*@
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Flight.FlightName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Flight.BusinessClassPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Flight.EconomicClassPrice)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SeatType)
+                            </td>
+
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Passenger.Id)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Passenger.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Passenger.LastName)
+                            </td>
+                            <td>
+                                @{
+                                    double price = item.Flight.BusinessClassPrice;
+                                    if (item.SeatType == "Economic Class")
+                                    {
+                                        price = item.Flight.EconomicClassPrice;
+                                    }
+                                    @Html.DisplayFor(modelItem => price)
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Passenger.Id }) |
+
+                            </td>
+                            @*<td>
+                                    <a asp-controller="Passengers" asp-action="Index" asp-route-id="@item.Flight.Id">
+                                        ADD MORE PASSENGERS
+                                    </a> |
+                                </td>*@
+                        </tr>
+                    }
+
+                    <tr>
+                        <td align="right" colspan="6">Total</td>
+                        <td>
+                            @{
+                                double total = 0;
+                                foreach (var item in Model)
+                                {
+                                    if (item.SeatType == "Economic Class")
+                                    {
+                                        total += item.Flight.EconomicClassPrice;
+                                    }
+                                    else
+                                    {
+                                        total += item.Flight.BusinessClassPrice;
+                                    }
+                                }
+                            }
+                            @total
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Check-Out" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+}
+else
+{
+    <span>No passenger And Flight in the ticket booking</span>
+}
+<br>
+<a asp-controller="Passengers" asp-action="Index">
+    ADD MORE PASSENGERS
+</a> |
+

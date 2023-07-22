@@ -1,0 +1,124 @@
+﻿@model IEnumerable<FlightBooking.MVC_Sprint2.Models.TicketDetail>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div style="font-family:'Times New Roman'">
+    <h1 style="color:brown" align="center" ;><b>Ticket Invoice</b></h1>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @{ var ticket = @ViewBag.Ticket as Ticket;}
+        <div class="form-group">
+            <label asp-for="@ticket.Id" class="control-label"></label>
+            <input asp-for="@ticket.Id" class="form-text" readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for="@ticket.PaymentDate" class="control-label"></label>
+            <input asp-for="@ticket.PaymentDate" class="form-text" readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for="@ticket.Payment.PaymentMode" class="control-label"></label>
+            <input asp-for="@ticket.Payment.PaymentMode" class="form-text" readonly />
+        </div>
+        @if (ticket.Payment.UPI == 0)
+        {
+            <div class="form-group">
+                <label asp-for="@ticket.Payment.BankName" class="control-label"></label>
+                <input asp-for="@ticket.Payment.BankName" class="form-text" readonly />
+            </div>
+        }
+        @if (ticket.Payment.PaymentMode == 0)
+        {
+            <div class="form-group">
+                <label asp-for="@ticket.Payment.UPI" class="control-label"></label>
+                <input asp-for="@ticket.Payment.UPI" class="form-text" readonly />
+            </div>
+        }
+    </div>
+
+    @*<div class="form-group">
+        <label asp-for="@ticket.Agent.UserName" class="control-label"></label>
+        <input asp-for="@ticket.Agent.UserName" class="form-text" readonly />
+    </div>*@
+    <div class="form-group">
+        <label asp-for="@ticket.Agent.PhoneNumber" class="control-label">Agent contact No</label>
+        <input asp-for="@ticket.Agent.PhoneNumber" class="form-text" readonly />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@ticket.Agent.Email" class="control-label">Agent Email</label>
+        <input asp-for="@ticket.Agent.Email" class="form-text" readonly />
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight.Id)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Flight.FlightName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Passenger.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Passenger.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Passenger.LastName)
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.Passenger.ContactNo)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flight.Id)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flight.FlightName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Passenger.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Passenger.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Passenger.LastName)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Passenger.ContactNo)
+                    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+
+            </tr>
+        }
+        <tr>
+            <td style="color:blueviolet" align="right" colspan="6">Total Amount Paid</td>
+            <td>
+                @{ var total = Model.Sum(i => i.Price);}
+                @total
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,97 @@
+﻿@model FlightBooking.MVC_Sprint2.Models.FlightVIewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 style="color:coral">Flight Information</h1>
+
+<div>
+    <h4 style="color:darkred">Flight</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FlightName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FlightName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FromLocation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FromLocation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ToLocation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ToLocation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FlightStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FlightStatus)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DepartureDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DepartureTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ArrivalDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ArrivalDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ArrivalTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ArrivalTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BusinessSeatCapacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BusinessSeatCapacity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EconomicSeatCapacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EconomicSeatCapacity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BusinessClassPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BusinessClassPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EconomicClassPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EconomicClassPrice)
+        </dd>
+    </dl>
+   
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

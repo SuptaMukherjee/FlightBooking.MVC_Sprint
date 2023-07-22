@@ -1,0 +1,84 @@
+﻿@model FlightBooking.MVC_Sprint2.Models.Flight
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Flight</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FlightName" class="control-label"></label>
+                <input asp-for="FlightName" class="form-control" />
+                <span asp-validation-for="FlightName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromLocation" class="control-label"></label>
+                <select asp-for="FromLocation" class="form-control"
+                        asp-items="Html.GetEnumSelectList<FromLocation>()">
+                    <option value=" ">Choose your Boarding Location</option>
+                </select>
+                <span asp-validation-for="FromLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToLocation" class="control-label"></label>
+                <select asp-for="ToLocation" class="form-control"
+                        asp-items="Html.GetEnumSelectList<ToLocation>()">
+                    <option value=" ">Choose your Destination</option>
+                </select>
+                <span asp-validation-for="ToLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlightStatus" class="control-label"></label>
+                <select asp-for="FlightStatus" class="form-control"
+                        asp-items="Html.GetEnumSelectList<FlightStatus>()">
+                    <option value=" ">Select</option>
+                </select>
+                <span asp-validation-for="FlightStatus" class="text-danger"></span>
+            </div>
+            @*<div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsActive" />
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </label>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="BusinessSeatCapacity" class="control-label"></label>
+                <input asp-for="BusinessSeatCapacity" class="form-control" />
+                <span asp-validation-for="BusinessSeatCapacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EconomicSeatCapacity" class="control-label"></label>
+                <input asp-for="EconomicSeatCapacity" class="form-control" />
+                <span asp-validation-for="EconomicSeatCapacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusinessClassPrice" class="control-label"></label>
+                <input asp-for="BusinessClassPrice" class="form-control" />
+                <span asp-validation-for="BusinessClassPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EconomicClassPrice" class="control-label"></label>
+                <input asp-for="EconomicClassPrice" class="form-control" />
+                <span asp-validation-for="EconomicClassPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

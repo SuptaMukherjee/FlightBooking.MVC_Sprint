@@ -1,0 +1,83 @@
+﻿@model IEnumerable<FlightBooking.MVC_Sprint2.Models.Payment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div style="font-family:'Times New Roman'">
+    <h1 style="color:indianred" align="center" ;><b>Payment History</b></h1>
+</div>
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            @*            <th>
+                    @Html.DisplayNameFor(model => model.BankName)
+                </th>*@
+            @*            <th>
+                    @Html.DisplayNameFor(model => model.CardNO)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentDate)
+            </th>
+            @*            <th>
+                    @Html.DisplayNameFor(model => model.Cvv)
+                </th>*@
+            @*            <th>
+                    @Html.DisplayNameFor(model => model.Customer)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                @*            <td>
+                        @Html.DisplayFor(modelItem => item.BankName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CardNO)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentDate)
+                </td>
+                @*            <td>
+                        @Html.DisplayFor(modelItem => item.Cvv)
+                    </td>*@
+                @*            <td>
+                        @Html.DisplayFor(modelItem => item.Customer.Id)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalAmount)
+                </td>
+                <td>
+                    @{
+                        string isActive = item.IsActive ? "Yes" : "No";
+                    }
+                    @Html.DisplayFor(modelItem => isActive)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-controller="Home" asp-action="Index" asp-route-id="@item.Id">Home</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
